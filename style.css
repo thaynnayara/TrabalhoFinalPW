@@ -1,0 +1,966 @@
+/* --- Import de Fontes Google --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+/* --- Variáveis CSS: Paleta de Cores Temática e Espaçamentos --- */
+:root {
+    --primary-red: #E74C3C; 
+    --secondary-orange: #FF5722;
+    --dark-black: #1a1a1a; 
+    --text-light: #f0f0f0; 
+    --accent-gold: #FFD700; 
+    --gray-dark: #333333; 
+
+    --spacing-xs: 8px;
+    --spacing-sm: 15px;
+    --spacing-md: 25px;
+    --spacing-lg: 50px;
+    --spacing-xl: 80px;
+
+    --border-radius-sm: 5px;
+    --border-radius-md: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.7;
+    color: var(--text-light);
+    background-color: var(--dark-black); 
+    background-image: url('https://i.pinimg.com/736x/7c/b5/4d/7cb54dc13419c77d62e594d221cdad2b.jpg'); 
+    background-attachment: fixed; 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100vh; 
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); 
+    z-index: -1;
+}
+
+
+.container {
+    background-color: rgba(26, 26, 26, 0.95); 
+    max-width: 1200px;
+    margin: var(--spacing-lg) auto; /* Espaçamento superior/inferior e centralização */
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+a {
+    color: var(--secondary-orange);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-red);
+    transform: translateY(-2px); 
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Cinzel', serif;
+    color: var(--accent-gold);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* --- Header e Navegação --- */
+header {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 3px solid var(--primary-red);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+    max-width: 1400px; 
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.logo img {
+    height: 60px; 
+    width: auto;
+    border-radius: 50%;
+    border: 3px solid var(--accent-gold);
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: rotate(10deg) scale(1.1); 
+}
+
+.logo h1 {
+    color: var(--text-light);
+    font-size: 2.2rem;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s ease;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.menu a:hover, .menu a.active { 
+    background-color: var(--primary-red);
+    box-shadow: 0 0 15px var(--primary-red);
+    transform: translateY(-3px);
+}
+
+/* --- Dropdown Menu --- */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--gray-dark); 
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+    z-index: 10;
+    border-top: 3px solid var(--accent-gold);
+    border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: var(--text-light);
+    padding: 12px 20px;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: none;
+    font-weight: 400;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--primary-red);
+    color: var(--text-light);
+    transform: translateX(5px);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* --- Seções de Conteúdo Geral --- */
+/* --- Seções de Conteúdo Geral --- */
+.content-page {
+    /* Estilos já no .container geral */
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin-top: var(--spacing-lg); /* Ajusta margem para não colar no header sticky */
+}
+
+.content-section {
+    padding: var(--spacing-md) 0;
+}
+
+.content-section h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+    color: var(--primary-red); /* Títulos de seção em vermelho principal */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* Sombra para destaque */
+}
+
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 4px;
+    background-color: var(--accent-gold);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    border-radius: 2px;
+}
+
+.content-section h3 {
+    font-size: 2.2rem;
+    color: var(--secondary-orange); /* Subtítulos em laranja */
+    margin-top: var(--spacing-xl); /* Mais espaço antes de novos subtítulos */
+    margin-bottom: var(--spacing-md);
+    border-left: 6px solid var(--accent-gold); /* Borda lateral dourada */
+    padding-left: var(--spacing-md); /* Aumenta um pouco o padding para a borda */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    line-height: 1.3; /* Melhora a leitura de subtítulos longos */
+}
+
+.content-section p {
+    margin-bottom: var(--spacing-lg); /* Aumenta o espaço entre parágrafos */
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: var(--text-light);
+    max-width: 850px; /* Limita a largura dos parágrafos para melhor leitura */
+    margin-left: auto; /* Centraliza o parágrafo dentro da seção */
+    margin-right: auto; /* Centraliza o parágrafo dentro da seção */
+}
+
+.content-section ul {
+    list-style: none; /* Remove bullet padrão */
+    margin-bottom: var(--spacing-lg); /* Aumenta o espaço após a lista */
+    padding-left: var(--spacing-md);
+    max-width: 850px; /* Alinha a largura da lista com os parágrafos */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-section ul li {
+    position: relative;
+    padding-left: var(--spacing-md); /* Espaço para o novo marcador */
+    margin-bottom: var(--spacing-sm); /* Espaço entre os itens da lista */
+    color: var(--text-light);
+    line-height: 1.6; /* Melhor espaçamento da linha nos itens */
+}
+
+.content-section ul li::before {
+    content: '•'; /* Marcador de ponto simples */
+    position: absolute;
+    left: 0;
+    color: var(--primary-red); /* Cor vermelha para o marcador */
+    font-size: 1.2em; /* Tamanho do marcador */
+    top: 0; /* Alinha o marcador com o topo do texto */
+    font-weight: bold;
+}
+
+.content-section strong {
+    color: var(--secondary-orange);
+    font-weight: 700;
+}
+
+/* Para melhorar a quebra de texto em telas menores */
+@media (max-width: 900px) {
+    .content-section p,
+    .content-section ul {
+        max-width: 100%; /* Permite que o texto ocupe toda a largura disponível */
+        padding-left: var(--spacing-md); /* Adiciona padding para não colar nas bordas */
+        padding-right: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .content-section h2 {
+        font-size: 2.5rem;
+    }
+    .content-section h3 {
+        font-size: 1.8rem;
+        padding-left: var(--spacing-sm);
+    }
+    .content-section p {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-md);
+    }
+    .content-section ul li {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section h2 {
+        font-size: 2rem;
+    }
+    .content-section h3 {
+        font-size: 1.5rem;
+    }
+    .content-section p,
+    .content-section ul li {
+        font-size: 0.95rem;
+    }
+}
+
+/* --- Padronização Geral de Imagens --- */
+img {
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
+}
+
+/* --- Estilos Específicos --- */
+
+/* Logo no cabeçalho */
+header .logo img {
+  width: 50px; 
+  height: auto; 
+  margin-right: 10px; 
+  vertical-align: middle; 
+}
+
+/* Pôster do filme */
+.movie-poster {
+  width: 100%;
+  max-width: 300px; 
+  height: auto; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  margin: 0 auto 20px auto;
+}
+
+/* Imagens do elenco */
+.cast-member img {
+  width: 120px; 
+  height: 120px; 
+  object-fit: cover; 
+  border-radius: 50%; 
+  border: 3px solid var(--cor-destaque); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 10px; 
+}
+
+/* Estilo para a grade do elenco */
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  gap: 20px; 
+  text-align: center; 
+}
+
+/* --- Botões de Ação --- */
+.btn {
+    background-color: var(--primary-red);
+    color: var(--text-light);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: var(--border-radius-md);
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    display: inline-block; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--accent-gold); 
+}
+
+.btn:hover {
+    background-color: var(--secondary-orange);
+    box-shadow: 0 6px 15px rgba(255, 87, 34, 0.6);
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--text-light);
+}
+
+/* --- Seção Hero (para a página inicial) --- */
+.hero-section {
+    
+    height: 600px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-light);
+    position: relative;
+    
+    margin-bottom: var(--spacing-xl); 
+}
+
+/* Remover o ::before do hero se o body::before já faz o overlay */
+.hero-section::before {
+     content: ''; 
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.4); 
+     z-index: 1; 
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; 
+    max-width: 900px;
+    padding: var(--spacing-md);
+    background-color: rgba(0, 0, 0, 0.4); 
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--primary-red);
+}
+
+.hero-content h2 {
+    font-size: 4.5rem; 
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+    line-height: 1.1;
+    color: var(--accent-gold); 
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    color: var(--text-light);
+}
+
+/* --- Seção de Personagens em Destaque (Cards com Flip Effect) --- */
+.featured-characters {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.featured-characters h3 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--primary-red);
+}
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-lg);
+    perspective: 1000px; 
+}
+
+.character-card {
+    width: 100%;
+    height: 380px; 
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+    border-radius: var(--border-radius-md);
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: var(--border-radius-md);
+}
+
+.character-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 2px solid var(--primary-red);
+    background-color: var(--gray-dark); 
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5); 
+}
+
+.card-front {
+    background-color: var(--dark-black); 
+    color: var(--text-light);
+    border-color: var(--accent-gold); 
+}
+
+.card-front img {
+    max-width: 90%;
+    max-height: 80%; 
+    object-fit: cover;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-sm);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.card-front h4 {
+    margin: 0;
+    font-size: 1.8em; 
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-back {
+    background-color: var(--gray-dark); 
+    color: var(--text-light);
+    transform: rotateY(180deg);
+    text-align: left;
+    border-color: var(--primary-red); 
+}
+
+.card-back h4 {
+    margin-top: 0;
+    font-size: 1.6em;
+    color: var(--accent-gold);
+    margin-bottom: var(--spacing-xs);
+}
+
+.card-back p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* --- Galeria de Imagens (GRID) --- */
+.gallery-section {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.gallery-section h2 {
+    color: var(--primary-red);
+    font-size: 3rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.gallery-item {
+    background-color: var(--gray-dark);
+    border: 2px solid var(--primary-red);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer; 
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.7); 
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 220px; 
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);  
+}
+
+.gallery-item-caption {
+    padding: var(--spacing-sm);
+    text-align: center;
+    color: var(--text-light);
+    font-weight: 300;
+    background-color: rgba(0, 0, 0, 0.6); 
+    font-size: 0.95rem;
+}
+
+/* --- Modal (LightBox) para Galeria de Imagens --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1001; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95); 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none; 
+}
+
+.modal.active { 
+    opacity: 1;
+    pointer-events: auto; 
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh; 
+    object-fit: contain;
+    border: 4px solid var(--accent-gold); 
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.7); 
+    transform: scale(0.8); 
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);  
+}
+
+.modal.active .modal-content {
+    transform: scale(1); 
+}
+
+.modal-caption {
+    margin: var(--spacing-sm) auto;
+    display: block;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    color: var(--text-light);
+    padding: var(--spacing-xs) 0;
+    font-size: 1.3em;
+    font-weight: 400;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: var(--border-radius-sm);
+}
+
+.close-button {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-lg);
+    color: var(--text-light);
+    font-size: 4em; 
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    z-index: 1002; 
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-red);
+    text-decoration: none;
+    transform: rotate(90deg) scale(1.1); 
+}
+
+/* --- Vídeo Responsivo --- */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    margin: var(--spacing-lg) 0;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    border: 3px solid var(--accent-gold);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- Formulário de Contato --- */
+.contact-form-section {
+    background-color: var(--gray-dark);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    max-width: 700px; 
+    margin: var(--spacing-lg) auto;
+    border: 2px solid var(--primary-red);
+}
+
+.contact-form-section h2 {
+    text-align: center;
+    color: var(--primary-red);
+    margin-bottom: var(--spacing-lg);
+    font-size: 2.8rem;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-light);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 2px solid var(--accent-gold); 
+    border-radius: var(--border-radius-sm);
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5); 
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-group button {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-sm);
+    background-color: var(--primary-red);
+    color: var(--text-light);
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 2px solid var(--accent-gold);
+}
+
+.form-group button:hover {
+    background-color: var(--secondary-orange);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 8px 20px rgba(255, 87, 34, 0.7);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: var(--text-light);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    margin-top: var(--spacing-xl);
+    font-size: 0.95em;
+    border-top: 3px solid var(--primary-red);
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+/* --- Responsividade --- */
+
+/* Ajustes para Tablets e Telas Menores (768px a 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        margin: var(--spacing-lg) var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+
+    nav {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .menu {
+        gap: var(--spacing-sm);
+    }
+
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content h2 {
+        font-size: 3.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .content-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .content-section h3 {
+        font-size: 1.8rem;
+    }
+
+    .character-card {
+        height: 350px; 
+    }
+}
+
+/* Ajustes para Celulares (abaixo de 768px) */
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+
+    .logo {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        width: 100%;
+        margin-top: var(--spacing-sm);
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .menu a {
+        padding: var(--spacing-sm);
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu li:last-child a {
+        border-bottom: none;
+    }
+
+    .dropdown-content {
+        position: static;
+        transform: translateX(0);
+        width: 100%;
+        box-shadow: none;
+        border-top: none;
+        padding-top: 0;
+        border-radius: 0;
+    }
+
+    .dropdown-content a {
+        padding-left: var(--spacing-lg);
+        text-align: center;
+    }
+
+    .hero-section {
+        height: 400px; 
+    }
+
+    .hero-content h2 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .content-page, .contact-form-section {
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) var(--spacing-xs);
+    }
+
+    .content-section h2 {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .content-section h3 {
+        font-size: 1.6rem;
+    }
+
+    .character-grid, .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .character-card {
+        height: 320px;
+    }
+
+    .modal-content {
+        max-width: 95%;
+        max-height: 85vh;
+    }
+
+    .close-button {
+        top: 10px;
+        right: 20px;
+        font-size: 3em;
+    }
+}
+
+/* Ajustes para telas muito pequenas (abaixo de 480px) */
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .content-section p, .content-section ul li, .modal-caption {
+        font-size: 0.9rem;
+    }
+}
